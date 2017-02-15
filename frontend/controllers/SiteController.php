@@ -26,6 +26,14 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
+                // 'ips'=>['*'],
+                // 'matchCallback' =>function ($rule, $action) {
+                //     throw new \Exception('У вас нет доступа к этой странице');
+                // }, 
+                'denyCallback' => function ($rule, $action) {
+                    throw new \Exception('У вас нет доступа к этой странице');
+                },
+                // 'only' => ['index', 'logout', 'signup'],
                 'only' => ['logout', 'signup'],
                 'rules' => [
                     [
@@ -34,9 +42,12 @@ class SiteController extends Controller
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['logout'],
-                        'allow' => true,
+                        'actions' => ['index', 'logout'],
+                        'allow' => true, // Login pagega jo'natish yoki jo'natmaslikni bildiradi.
                         'roles' => ['@'],
+                        // 'matchCallback' => function ($rule, $action) {
+                        //     return date('d-m') === '31-10';
+                        // }
                     ],
                 ],
             ],

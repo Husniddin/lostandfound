@@ -47,9 +47,9 @@
             </div>
           </div> -->
 
-          <h2 class="sub-header">Section title</h2>
           <div class="row">
             <div class="col-lg-6">
+              <h2 class="sub-header">Section title</h2>
               <div class="table-responsive">
                 <table class="table table-striped">
                   <thead>
@@ -179,6 +179,7 @@
               </div>
             </div>
             <div class="col-lg-6">
+              <h2 class="sub-header">Section title</h2>
               <div class="table-responsive">
                 <table class="table table-striped">
                   <thead>

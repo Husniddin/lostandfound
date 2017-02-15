@@ -7,11 +7,33 @@ $params = array_merge(
 );
 
 return [
+    // Bu juda xam keraklik ish bo'libdi.
+    // 'as hostControl' => [
+    //     'class' => 'yii\filters\HostControl',
+    //     'allowedHosts' => [
+    //         'localhost',
+    //         'example.com',
+    //         '*.example.com',
+    //     ],
+    //     'fallbackHostInfo' => 'https://example.com',
+    // ],
     'id' => 'app-frontend',
+    'language' => 'en',
+    'sourceLanguage'=>'',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
+        'i18n' => [
+            'translations' => [
+                '*' => [
+                    'class' => 'yii\i18n\PhpMessageSource'
+                ],
+            ],
+        ],
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
+        ],
         'request' => [
             'csrfParam' => '_csrf-frontend',
         ],
