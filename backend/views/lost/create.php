@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\Lost */
 
-$this->title = Yii::t('found', 'Create Lost');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('found', 'Losts'), 'url' => ['index']];
+$this->title = Yii::t('lost', 'Create Lost');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('lost', 'Losts'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="lost-create">

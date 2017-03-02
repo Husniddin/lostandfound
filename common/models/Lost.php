@@ -36,7 +36,7 @@ class Lost extends \yii\db\ActiveRecord
     {
         return [
             [['user_id', 'post_category_id'], 'integer'],
-            [['description'], 'required'],
+            [['description', 'user_id'], 'required'],
             [['text', 'state'], 'string'],
             [['created_dt', 'updated_dt'], 'safe'],
             [['description'], 'string', 'max' => 500],

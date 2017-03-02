@@ -12,19 +12,13 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'user_id')->textInput() ?>
+    <?php echo $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
+    <?php echo $form->field($model, 'text')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
+    <?php //echo $form->field($model, 'post_category_id')->textInput(); ?>
 
-    <?= $form->field($model, 'created_dt')->textInput() ?>
-
-    <?= $form->field($model, 'updated_dt')->textInput() ?>
-
-    <?= $form->field($model, 'post_category_id')->textInput() ?>
-
-    <?= $form->field($model, 'state')->dropDownList([ 'draft' => 'Draft', 'moderated' => 'Moderated', 'published' => 'Published', 'deleted' => 'Deleted', ], ['prompt' => '']) ?>
+    <?php //echo $form->field($model, 'state')->dropDownList([ 'draft' => 'Draft', 'moderated' => 'Moderated', 'published' => 'Published', 'deleted' => 'Deleted', ], ['prompt' => '']); ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('found', 'Create') : Yii::t('found', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

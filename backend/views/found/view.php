@@ -6,17 +6,13 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model common\models\Found */
 
-$this->title = $model->description;
+$this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('found', 'Founds'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="found-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
-
-    <?php if (Yii::$app->session->hasFlash('foundCreated')): ?>
-        <h4><?php echo Yii::$app->session->getFlash('foundCreated'); ?></h4>
-    <?php endif; ?>
 
     <p>
         <?= Html::a(Yii::t('found', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>

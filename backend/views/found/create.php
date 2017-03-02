@@ -4,13 +4,13 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Lost */
+/* @var $model common\models\Found */
 
-$this->title = Yii::t('found', 'Create Lost');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('found', 'Losts'), 'url' => ['index']];
+$this->title = Yii::t('found', 'Create Found');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('found', 'Founds'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="lost-create">
+<div class="found-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

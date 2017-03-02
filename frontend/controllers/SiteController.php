@@ -2,12 +2,21 @@
 namespace frontend\controllers;
 
 use Yii;
+
 use yii\base\InvalidParamException;
+
+use yii\data\ActiveDataProvider;
+
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
+
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+
 use common\models\LoginForm;
+use common\models\Lost;
+use common\models\Found;
+
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
@@ -83,7 +92,20 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('list');
+        $lostDataProvider = new ActiveDataProvider([
+            'query' => Lost::find(),
+            'sort' => false,
+        ]);
+
+        $foundDataProvider = new ActiveDataProvider([
+            'query' => Found::find(),
+            'sort' => false,
+        ]);
+
+        return $this->render('list', [
+            'lostDataProvider' => $lostDataProvider,
+            'foundDataProvider' => $foundDataProvider,
+        ]);
     }
 
     /**

@@ -19,6 +19,7 @@ return [
     // ],
     'id' => 'app-frontend',
     'language' => 'en',
+    'timeZone' => 'Asia/Tashkent',
     'sourceLanguage'=>'',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],

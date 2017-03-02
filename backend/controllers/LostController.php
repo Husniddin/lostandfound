@@ -3,16 +3,12 @@
 namespace frontend\controllers;
 
 use Yii;
-
-use yii\data\ActiveDataProvider;
-
+use common\models\Lost;
+use common\models\LostSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-
 use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
 
-use common\models\Lost;
 /**
  * LostController implements the CRUD actions for Lost model.
  */
@@ -24,28 +20,6 @@ class LostController extends Controller
     public function behaviors()
     {
         return [
-            'access' => [
-                'class' => AccessControl::className(), 
-                // 'denyCallback' => function ($rule, $action) {
-                //     throw new \Exception('У вас нет доступа к этой странице');
-                // },
-                'only' => ['create', 'update', 'delete'],
-                'rules' => [
-                    // [
-                    //     'actions' => ['signup'],
-                    //     'allow' => true,
-                    //     'roles' => ['?'],
-                    // ],
-                    [
-                        'actions' => ['create', 'update', 'delete'],
-                        'allow' => true, // Login pagega jo'natish yoki jo'natmaslikni bildiradi.
-                        'roles' => ['@'],
-                        // 'matchCallback' => function ($rule, $action) {
-                        //     return date('d-m') === '31-10';
-                        // }
-                    ],
-                ],
-            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -61,11 +35,11 @@ class LostController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Lost::find(),
-        ]);
+        $searchModel = new LostSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
+            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
@@ -90,12 +64,8 @@ class LostController extends Controller
     public function actionCreate()
     {
         $model = new Lost();
-        $model->user_id = Yii::$app->user->id;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            $session = Yii::$app->session;
-            $session->setFlash("lostCreated", "Sizni xabaringiz qabul qilindi. Moderatsiyadan so'ng asosiy saxifada ko'rinadi.");
-
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
